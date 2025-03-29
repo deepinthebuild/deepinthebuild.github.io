@@ -12,7 +12,7 @@ lang: en-US
 title: "Deep in the Build"
 
 # A description of your site for meta tag, search engine results.
-description: "Spelunking in the land of toolchains and bad tools."
+description: "Writing about toolchains, bad tools, and making engineers happy."
 
 # The subpath of your site, e.g. /blog, for generating urls.
 baseurl: ""
@@ -43,7 +43,7 @@ accent_color: '#2d72d9'
 
 # Site footer
 footer:
-  content: "&copy; deepinthebuild all rights reserved."
+  content: "&copy; Chris McDonald all rights reserved."
   has_social: true
 
 # Plugins
