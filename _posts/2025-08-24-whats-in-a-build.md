@@ -2,7 +2,7 @@
 layout: post
 title: "What's in a build?"
 description: "What would you say you do here?"
-date: 2025-03-29
+date: 2025-08-24
 tags: [build]
 ---
 
@@ -87,9 +87,9 @@ on reducing the existing overhead. Hence: a Build team is born.
 
 #### Coordination Problems
 
-Most problems in software have more than one acceptable solution and the only
-cardinal sin of project management is wasting work solving the same problem more
-than once. So all we have to do is pick one of those solutions and stick with
+Most problems in software have more than one acceptable solution and wasting
+work solving the same problem more than once is a cardinal sin of project
+management. So all we have to do is pick one of those solutions and stick with
 it, right? Even better, maybe someone else has already had the same problem as
 you and came up with a reasonable approach that you'd be happy to reuse. All you
 have to do is figure out how to integrate the code they wrote with what you're
@@ -108,11 +108,25 @@ be so difficult.
 
 Beyond the technical decisions made by a team within their domain there are
 countless choices made about how teams interact with one another. These customs
-& norms are frequently not the result of a visible or legible decision and more
-often than not have grown organically.
+& norms have more often than not have grown organically over the lifetime of the
+project rather than originating from any sort of legible decision-making
+process. And whether or not they're written down anywhere or automatically
+enforced by tooling these cultural conventions absolutely exist; Sometimes the
+only way you find out about them is by someone angrily telling you that you've
+done things the wrong way.
 
-If you've never had a frustrating experience like the one describe in this
-section, consider sending a thank you note to your Build people.
+The Build team sits at a unique position to influence & set policy on such
+matters. Import conventions, package layout, deployment artifacts: Any number of
+reasonable choices exist that have little value over one another and it is
+primarily costly when teams *differ*. As these issues are usually secondary
+considerations to the real problem an engineer is trying to solve they are often
+happy to be able to copy from or simply follow blessed examples of the "right
+way" to do things. The soft power of controlling the "default" option or
+deliberately making a desired choice the easiest path to take leads to a policy
+being adopted with no authoritative mandate or expenditure of political capital.
+
+If you've never had a frustrating experience like the one described in this
+section, consider sending a thank you note to your Build people. :)
 
 #### Tighter Loops
 
@@ -136,14 +150,13 @@ test suite populated on the PR, can we make it so they can easily run those same
 tests locally? If that's already possible, do the runtime environments and
 behavior of those test suites match between the local developer flow and the CI
 suite so that developers actually *trust* the local results? Could this property
-be upheld by a linter or static analysis rather than requiring a test suite to
-be run (or a human to make a comment on a PR)? Can we make it so those lints &
-checks are shown to the developer in their editor, before they even hit "Save"?
+be upheld by a linter or static analysis tool rather than requiring a test suite
+to be run (or a human to make a comment on a PR)? Can we make it so those lints
+& checks are shown to the developer in their editor, before they even hit
+"Save"?
 
-#### Friction
+More thoughts about the role of Build and what it means to be good at the job to come in a subsequent post.
 
-
-### Risk Management
 
 [^guy]: Intended as a gender-neutral title.
 
