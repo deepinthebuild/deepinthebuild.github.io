@@ -13,6 +13,8 @@ level of detail than just "software engineer" I've never had a answer that felt
 like it really captures the essence of what I think about day-to-day. This post
 is intended to serve as that full explanation of what I think my job is.
 
+<!--more-->
+
 ## The "in-between" Team
 
 Every build team I've talked to, heard of, or worked on has ended up being

@@ -13,6 +13,8 @@ It's pretty easy to get Git to tell us[^git] what files were altered between two
 Clearly, not all files are equal in significance: A change to a `README` probably merits less scrutiny & testing than a change to a unit test and changes to either of those are less significant (in some sense) than a change to a core behavioral library or user-facing API. 
 Sometimes the connection between a critical component and a file-level diff can be much harder to understand: An edit to a build script, or a change to toolchain, or rolling the URI pointing to a pinned dependency could all cause changes of great significance in ways that are less obvious than an edit to `important_library.cc`.
 
+<!--more-->
+
 Fortunately, Bazel both has a holistic view of all of these relationships in a project and provides nice query mechanisms for us to be able to answer our original question.
 The bulk of this analysis is powered by the excellent [bazel-diff](https://github.com/Tinder/bazel-diff) tool.
 
