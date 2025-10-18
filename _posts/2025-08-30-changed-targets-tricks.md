@@ -61,7 +61,6 @@ IMPORTANT_TARGETS=(
 
 We can easily support this by using `bazel query` to expand & canonicalize the list of labels[^list] or patterns into a full list of labels in a file named `important_targets.txt`:
 
-Code snippet:
 ```bash
 bazel query 'set('"${RELEVANT_TARGETS[*]}"')' --output_file=important_targets.txt
 ```
@@ -80,7 +79,7 @@ IMPORTANT_TARGETS=(
 Now answering the question "Has anything important been affected?" is quite straightforward: Is any entry in `important_targets.txt` present in `affected_targets.txt`?
 The principled way to do this would be to ingest each file into a set-like structure and check to see if the intersection is nonempty, but let's be Build gremlins together and do it in a Bash one-liner:
 ```bash
-if grep -q -x -f important_targets.txt affected_targets.txt ;
+if grep -qxFf important_targets.txt affected_targets.txt ; then
     run_expensive_job
 fi
 ```
@@ -88,8 +87,9 @@ fi
 This is taking advatange of the fact `grep` exits with 0 if a match was found and 1 if no match was found, along with the following option flags:
 
 * `-q`/`--quiet`: Suppresses printing the matches, since we don't actually care *what* is matched only whether or not a match is found.
-* `-f`/`--file=`: Obtain the search patterns from the specified file, one per line.
 * `-x`/`--line-regexp`: Treat search patterns as only matching whole lines, i.e. implicitly surround the search pattern with `^` and `$`. This is needed so that labels only match themselves and not other labels that they are proper prefixes of, e.g. `//foo/bar:baz` should not match `//foo/bar:baz_v2`.
+* `-F`/`--fixed-strings`: Treat each search pattern as a literal string rather than as regular expressions. Bazel allows [a surprising range of characters](https://bazel.build/versions/8.4.0/concepts/labels#target-names) in target labels, so we need this flag to preclude the possibility of `grep` interpreting a particularly odd target name as containing a character class or search group.
+* `-f`/`--file=`: Obtain the search patterns from the specified file, one per line.
 
 With that we have all the necessary pieces to skip or dynamically trigger jobs based on Bazel's analysis of what targets have been affected. Stop running those expensive jobs on `README` typo fixes!
 
